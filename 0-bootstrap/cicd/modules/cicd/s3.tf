@@ -120,11 +120,20 @@ data "aws_iam_policy_document" "codebuild_policy" {
 
 resource "aws_s3_bucket_lifecycle_configuration" "bucket_lifecycle_configuration" {
   for_each   = local.buckets_to_lock
-  depends_on = [aws_s3_bucket.codepipeline_bucket, aws_s3_bucket.codebuild_bucket]
-  bucket     = each.value
+  depends_on = [
+    aws_s3_bucket.codepipeline_bucket,
+    aws_s3_bucket.codebuild_bucket
+  ]
+  bucket = each.value
+
   rule {
     id     = "noncurrent-version-transition-objects-to-glacier"
     status = "Enabled"
+
+    filter {
+      prefix = ""
+    }
+
     noncurrent_version_transition {
       noncurrent_days = 30
       storage_class   = "GLACIER"

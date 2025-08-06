@@ -1,0 +1,23 @@
+global:
+  home_region: "ap-south-1"
+  lz_state_bucket: "aditya-lz-bucket-2025-landingzone"
+  lz_state_locking_dynamodb_table: "tf-locking-table"
+  switch_role_to_assume: "OrganizationAccountAccessRole"  
+
+bootstrap:
+  bootstrap_ou_name: "Bootstrap"
+  bootstrap_account_name: "BootstrapAccount"
+  bootstrap_account_email: "shriramlandingzone@gmail.com"
+
+  cicd:
+    git_repo_id: "shriiiraaam/aws-landing-zone" 
+    git_branch: "main" 
+    s3_bucket_prefix: "aditya-ganit-cicd-pipeline" 
+
+default_tags:  
+  common:
+    Owner: "shriram"
+    Environment: "dev"
+  account:
+    core:
+      Project: "LandingZone"

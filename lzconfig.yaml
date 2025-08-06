@@ -1,21 +1,21 @@
 global:
-  home_region: "ap-southeast-1"                          # Home region for AWS LZ deployment 
-  lz_state_bucket: "aws-lz-state-bucket"                 # Name for AWS LZ Terraform State bucket
+  home_region: "ap-south-1"                          # Home region for AWS LZ deployment 
+  lz_state_bucket: "aditya-lz-bucket-2025-landingzone"                 # Name for AWS LZ Terraform State bucket
   lz_state_locking_dynamodb_table: "aws-lz-state-lock"   # Name of DyanmoDB table for terraform state Locking
   switch_role_to_assume: "OrganizationAccountAccessRole" # Name of the Role to Assume to Deploy AWS LZ services in Accounts
 bootstrap:
   bootstrap_ou_name: "Bootstrap"                         # Bootstrap OU name
-  bootstrap_account_name: "LZ CICD"                      # LZ CICD Account Name
-  bootstrap_account_email: ""                            # example: test_at_ollion_com
+  bootstrap_account_name: "BootstrapAccount"                      # LZ CICD Account Name
+  bootstrap_account_email: "shriramlandingzone@gmail.com"                            # example: test_at_ollion_com
   cicd:
-    git_repo_id: "ollionorg/aws-landing-zone"            # AWS LZ Github Repository ID
+    git_repo_id: "shriiiraaam/aws-landing-zone"            # AWS LZ Github Repository ID
     git_repo_name: "aws-landing-zone"                    # AWS LZ Github Repository Name
     git_branch: "main"                                   # AWS LZ Github Repository Branch
-    s3_bucket_prefix: "aws-landing-zone"                 # S3 Bucket Prefix for AWS LZ Terraform State Bucket
+    s3_bucket_prefix: "aditya-ganit-cicd-pipeline"                 # S3 Bucket Prefix for AWS LZ Terraform State Bucket
 org:
   common:
     target_regions:
-      - "ap-southeast-1"                                 # Region where you want to deploy AWS LZ [single region only]
+      - "ap-south-1"                                 # Region where you want to deploy AWS LZ [single region only]
     object_lock_enabled: false                           # Whether you want to enable Object Lock for all S3 Buckets in AWS LZ
     object_lock_conf:     
       default_retention_mode: "COMPLIANCE"               # Object Lock Retention Mode [Only applicable if object_lock_enabled is set to true ]
@@ -236,8 +236,8 @@ env:
     tgw_attachment_subnets_cidr: []                     # Transit Gateway Subnet CIDRs for Staging VPC  eg:[] will create three subnets
 default_tags:
   common:                                               # Common tags
-    environment: "Test"
-    owner: "TFProviders"
+    environment: "dev"
+    owner: "shriram"
     project: "Test"
   account:
     core: {}                                            # Tags for Core Account

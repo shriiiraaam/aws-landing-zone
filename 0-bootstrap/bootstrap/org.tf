@@ -1,1 +1,1 @@
-data "aws_organizations_organization" "org" {}
+// data "aws_organizations_organization" "org" {}
